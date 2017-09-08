@@ -2,23 +2,23 @@
 
 ## common
 ```haxe
-var z: Zui = ... usual zui initialization ...
+var z = new Zui(...);
 ```
 
 ## IntTextProperty
 ```haxe
-var siv = new IntTextProperty();
-sip.value = ... some int value ...;
-z.textInput(sip.handle, 'SOME INT');
-trace('Some int value: ${siv.value}');
+var iprop = new IntTextProperty();
+iprop.value = 42;
+z.textInput(iprop.handle, 'ENTER VALUE');
+trace('Some int value: ${iprop.value}');
 ```
 
 ## FloatTextProperty
 ```haxe
-var sfv = new FloatTextProperty();
-sfv.value = ... some float value ...;
-z.textInput(sfv.handle, 'SOME FLOAT');
-trace('Some float value: ${sfv.value}');
+var fprop = new FloatTextProperty();
+fprop.value = 47.11;
+z.textInput(fprop.handle, 'ENTER VALUE');
+trace('Some float value: ${fprop.value}');
 ```
 
 ## EnumComboProperty
@@ -28,8 +28,13 @@ enum Foo {
 	EvenMoreBar;
 }
 
-var ecv = new EnumComboProperty(Foo);
-ecv.index = ... some int value ...;
-z.combo(ecv.handle, ecv.items, 'SELECT ONE');
-trace('index: ${ecv.index}');
+var ecprop1 = new EnumComboProperty(Foo);
+ecprop1.index = 0;
+z.combo(ecprop1.handle, ecprop1.items, 'SELECT ONE');
+trace('index: ${ecprop1.index}');
+
+var ecprop2 = new EnumComboProperty(Foo);
+ecprop2.value = EvenMoreBar;
+z.combo(ecprop2.handle, ecprop2.items, 'SELECT ONE');
+trace('value: ${ecprop2.value}');
 ```
